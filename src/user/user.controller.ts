@@ -1,7 +1,7 @@
-import { Controller, Get, Patch, Post, Delete, Req, Param } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get, Post, Patch, Delete, Req, Param} from '@nestjs/common';
+import {Request} from 'express';
 
-@Controller('/user')
+@Controller('user')
 export class UserController {
   @Get()
   getUsers() {
