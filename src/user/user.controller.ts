@@ -5,7 +5,8 @@ import {Request} from 'express';
 export class UserController {
   @Get()
   getUsers() {
-    return { name: 'Aryan', email: 'gargaryan83000@gmail.com' };
+    // return userService.get();
+    // return { name: 'Aryan', email: 'gargaryan83000@gmail.com' };
   }
 
   @Post()
