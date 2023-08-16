@@ -12,5 +12,15 @@ export class UserService {
     return req.body;
   }
 
-  update()
+  update(req: Request, param: { userId: number }) {
+    return { body: req.body, param };
+  }
+
+  getUser(param: { userId: number }) {
+    return param;
+  }
+
+  delete(param: { userId: number }) {
+    return param;
+  }
 }

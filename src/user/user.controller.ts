@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 export class UserController {
   // private userService;
 
-  // ! Dependency Injection
+  // ! Dependency Injection as injecting service in constructor.
   constructor(private userService: UserService){}
 
   //! Normal way of importing
@@ -27,18 +27,18 @@ export class UserController {
   }
 
   @Patch('/:userId')
-  update(@Req() request: Request) {
+  update(@Req() request: Request, @Param() param:{userId:number}) {
     // return request.body;
-    return this.userService.update(request);
+    return this.userService.update(request,param);
   }
 
   @Get('/:userId')
-  getUser(@Param() params: { userId: number }) {
-    return params;
+  getUser(@Param() param: { userId: number }) {
+    return this.userService.getUser(param);
   }
 
   @Delete('/:userId')
-  deleteUser(@Param() params: { userId: number }) {
-    return params;
+  deleteUser(@Param() param: { userId: number }) {
+    return this.userService.delete(param);
   }
 }
