@@ -1,17 +1,28 @@
-import { Controller, Get, Post, Patch, Delete, Req, Param, Body} from '@nestjs/common';
-import {Request} from 'express';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Req,
+  Param,
+  Body,
+} from '@nestjs/common';
+import { Request } from 'express';
 import { UserService } from './user.service';
+import { UpdateUserDto } from './dto/user-update.dto';
+import { CreateUserDto } from './dto/user-create.dto';
 
 @Controller('user')
 export class UserController {
   // private userService;
 
   // ! Dependency Injection as injecting service in constructor.
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService) {}
 
   //! Normal way of importing
   // constructor(userService: UserService){
-  //   // this.userService = userService;
+  //   this.userService = userService;
   //   this.userService = new UserService();
   // }
   @Get()
@@ -21,15 +32,18 @@ export class UserController {
   }
 
   @Post()
-  store(@Body() body: any) {
+  store(@Body() createUserDto: CreateUserDto) {
     // return request.body;
-    return this.userService.create(body);
+    return this.userService.create(createUserDto);
   }
 
   @Patch('/:userId')
-  update(@Body() body: any, @Param() param:{userId:number}) {
+  update(
+    @Body() updateUserDto: UpdateUserDto,
+    @Param() param: { userId: number },
+  ) {
     // return request.body;
-    return this.userService.update(body,param);
+    return this.userService.update(updateUserDto, param);
   }
 
   @Get('/:userId')
