@@ -8,12 +8,12 @@ export class UserService {
     return { name: 'Aryan', email: 'gargaryan83000@gmail.com' };
   }
 
-  create(req: Request) {
-    return req.body;
+  create(body:any) {
+    return body;
   }
 
-  update(req: Request, param: { userId: number }) {
-    return { body: req.body, param };
+  update(body: any, param: { userId: number }) {
+    return { body: body, param };
   }
 
   getUser(param: { userId: number }) {
