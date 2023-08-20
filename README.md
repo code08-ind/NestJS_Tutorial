@@ -27,3 +27,7 @@
 - Controllers
 - Providers
 - Modules
+
+#### Connection with MySQL
+
+We can easily connect our app with the MySQL and then use the ORM to basically function with it without writing complex SQL Codes.
