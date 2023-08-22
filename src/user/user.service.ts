@@ -14,12 +14,14 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  get() {
-    return { name: 'Aryan', email: 'gargaryan83000@gmail.com' };
+  get(): Promise<User[]> {
+    // return { name: 'Aryan', email: 'gargaryan83000@gmail.com' };
+    return this.userRepository.find();
   }
 
   create(createUserDto: CreateUserDto) {
-    return createUserDto;
+    // return createUserDto;
+    return this.userRepository.save(createUserDto);
   }
 
   update(updateUserDto: UpdateUserDto, userId: number) {
