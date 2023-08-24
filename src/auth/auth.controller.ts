@@ -1,9 +1,13 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { UserService } from 'src/user/user.service';
 
 @Controller('auth')
 export class AuthController {
+    constructor(private userService: UserService) { 
+
+    }
     @Post('/login')
-    login(){
-        return 'I am Login'
+    login(@Body() loginDto: any){
+        return this.userService.findByEmail(loginDto.email);
     }
 }
