@@ -1,16 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
   constructor(private userService: UserService) {}
-  async validateUser() {
-    const user = await this.userService.findByEmail(loginDto.email);
-    if (user) {
-      if (user.password === loginDto.password) {
-        return user;
-      }
-      return "password doesn't match";
+  async validateUser(email: string, password: string) {
+    const user = await this.userService.findByEmail(email);
+    if (user && user.password === password) {
+      return user;
     }
-    return 'unauthenticated';
+    return null;
   }
 }
